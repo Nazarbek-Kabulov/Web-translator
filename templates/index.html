@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translate</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+<body>
+<header>
+    <h1>Translate</h1>
+</header>
+<main>
+    <form method="POST" action="{% url 'translate' %}">
+        {% csrf_token %}
+        <label for="language-select"></label><select name="language" id="language-select">
+            <option value="uzbek">O'zbekcha</option>
+            <option value="english">English</option>
+        </select>
+        <p> </p>
+        <div class="input-container">
+            <label for="input-word">Input:</label>
+            <input type="text" id="input-word" name="input_word" placeholder="So'zni kiriting">
+        </div>
+        <p> </p>
+        <div class="output-container">
+            <label for="output-word">Output:</label>
+            <span id="output-word">{{ translation}}</span>
+        </div>
+        <p> </p>
+        <button type="submit">Tarjima qilish</button>
+    </form>
+</main>
+
+<script src="{% static 'script.js' %}"></script>
+</body>
+</html>
