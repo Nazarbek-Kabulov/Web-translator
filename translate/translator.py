@@ -3,7 +3,10 @@ import requests
 
 def translate(language1, language2, text):
     url = "https://translate-plus.p.rapidapi.com/translate"
-
+    if text == '':
+        text = ' '
+    else:
+        text = text
     payload = {
         "text": f"{text}",
         "source": f"{language1}",
@@ -18,5 +21,3 @@ def translate(language1, language2, text):
     response = requests.post(url, json=payload, headers=headers)
 
     return response.json()
-
-
